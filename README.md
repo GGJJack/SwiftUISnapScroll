@@ -1,0 +1,29 @@
+# SwiftUISnapScroll
+
+[![CI Status](https://img.shields.io/travis/ggaljjak/SwiftUISnapScroll.svg?style=flat)](https://travis-ci.org/ggaljjak/SwiftUISnapScroll)
+[![Version](https://img.shields.io/cocoapods/v/SwiftUISnapScroll.svg?style=flat)](https://cocoapods.org/pods/SwiftUISnapScroll)
+[![License](https://img.shields.io/cocoapods/l/SwiftUISnapScroll.svg?style=flat)](https://cocoapods.org/pods/SwiftUISnapScroll)
+[![Platform](https://img.shields.io/cocoapods/p/SwiftUISnapScroll.svg?style=flat)](https://cocoapods.org/pods/SwiftUISnapScroll)
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Requirements
+
+## Installation
+
+SwiftUISnapScroll is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'SwiftUISnapScroll'
+```
+
+## Author
+
+ggaljjak, hyojong6367@gmail.com
+
+## License
+
+SwiftUISnapScroll is available under the MIT license. See the LICENSE file for more info.
