@@ -1,0 +1,16 @@
+PODS:
+  - SwiftUISnapScroll (0.1.0)
+
+DEPENDENCIES:
+  - SwiftUISnapScroll (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftUISnapScroll:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftUISnapScroll: ecbcd2c917a9645077ad346daf958b2b90e25e31
+
+PODFILE CHECKSUM: 08f6b333b5250fe536d93bfedebab4722a726942
+
+COCOAPODS: 1.11.2

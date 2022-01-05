@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  SwiftUISnapScroll
 //
-//  Created by ggaljjak on 01/04/2022.
+//  Created by GGJJack on 01/04/2022.
 //  Copyright (c) 2022 ggaljjak. All rights reserved.
 //
 
@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow()
+        window?.rootViewController = ViewController()
+        window?.makeKeyAndVisible()
         return true
     }
 
