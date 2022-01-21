@@ -10,6 +10,7 @@ public struct SwiftUISnapScrollView<T, ContentView>: UIViewRepresentable where C
 
     @Binding var position: Int
     @Binding var items: [T]
+    @State private var lastItemCount: Int = 0
     private var itemWidth: CGFloat = 100
     private var itemSpacing: CGFloat = 0
     private var scrollDecelerationRate: ScrollDecelerationRate = .Fast
@@ -56,6 +57,7 @@ public struct SwiftUISnapScrollView<T, ContentView>: UIViewRepresentable where C
         view.register(SwiftUISnapScrollCell.self, forCellWithReuseIdentifier: "Sample")
         view.dataSource = context.coordinator
         view.delegate = context.coordinator
+        view.backgroundColor = UIColor.clear
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
         view.contentInsetAdjustmentBehavior = .never
@@ -68,11 +70,14 @@ public struct SwiftUISnapScrollView<T, ContentView>: UIViewRepresentable where C
         // layout.snapPosition = self.snapPosition
         layout.collectionView?.decelerationRate = scrollDecelerationRate == .Fast ? UIScrollViewDecelerationRateFast : UIScrollViewDecelerationRateNormal
         layout.collectionView?.contentInset = edgeInsets
-        uiView.reloadData()
-        print("Update UI View", position)
-        layout.collectionView?.layoutIfNeeded()
-        layout.collectionView?.scrollToItem(at: IndexPath(row: position, section: 0), at: .right, animated: false)
-        // layout.collectionView?.layoutSubviews()
+        if items.count == context.coordinator.itemCount {
+            if let items = layout.collectionView?.indexPathsForSelectedItems {
+                layout.collectionView?.reloadItems(at: items)
+            }
+        } else {
+            uiView.reloadData()
+        }
+        context.coordinator.itemCount = items.count
     }
     
     public func makeCoordinator() -> SwiftUISnapScrollCoordinator<T, ContentView> {
@@ -82,7 +87,6 @@ public struct SwiftUISnapScrollView<T, ContentView>: UIViewRepresentable where C
     public func itemWidth(width itemWidth: CGFloat) -> Self {
         var new = self
         new.itemWidth = itemWidth
-        print("ItemWidth", itemWidth)
         return new
     }
     
@@ -106,7 +110,7 @@ public struct SwiftUISnapScrollView<T, ContentView>: UIViewRepresentable where C
     
     public func edgeInsets(leading: CGFloat, trailing: CGFloat) -> Self {
         var new = self
-        new.edgeInsets = UIEdgeInsets(top: 0, left: self.itemSpacing, bottom: 0, right: self.itemSpacing)
+        new.edgeInsets = UIEdgeInsets(top: 0, left: leading, bottom: 0, right: trailing)
         return new
     }
     

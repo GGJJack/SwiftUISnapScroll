@@ -14,6 +14,7 @@ public class SwiftUISnapScrollCoordinator<T, ContentView: View>: NSObject, UICol
     private var collectionView: UICollectionView? = nil
     var itemWidth: CGFloat = 100
     var itemSpacing: CGFloat = 0
+    var itemCount: Int = 0
 
     public init(items: Binding<[T]>, @ViewBuilder contentView: @escaping (T) -> ContentView) {
         self._items = items
